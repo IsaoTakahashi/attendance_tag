@@ -1,0 +1,10 @@
+source 'http://rubygems.org'
+ruby '2.2.0'
+
+gem 'sinatra'
+gem 'sinatra-reloader'
+gem 'shotgun'
+gem 'rest-client'
+gem 'unicorn'
+gem 'sqlite3'
+gem 'sequel'
