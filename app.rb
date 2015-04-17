@@ -12,6 +12,12 @@ class Server < Sinatra::Base
         'Under Construction'
     end
 
+    get '/servo/:arg' do |arg|
+    	rad = arg || '0'
+    	`echo 6=#{arg}% > /dev/servoblaster`
+	'servo'
+    end
+
     post '/register', provides: :json do
         body = request.body.read
         p body
