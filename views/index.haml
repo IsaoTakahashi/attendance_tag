@@ -1,0 +1,49 @@
+%h1{:align => "center"} Interactive 勤怠 Sytem(仮)
+
+%hr
+
+%h2 Attendance Info
+%div.container
+  %table.table.table-striped.table-hover
+    %thead
+      %tr
+        %th ID
+        %th Employee ID
+        %th Date
+        %th status
+        %th Reason
+        %th Time
+        %th Comment
+        %th Registered Date
+        %th Last Updated Date
+    %tbody
+      - @attendances.each do |attendance|
+        %tr
+          %th= attendance[:id]
+          - name = 'Unknown'
+          - @employees.each do |employee|
+            - if employee[:id] == attendance[:employee_id]
+              - name = employee[:name]
+          %th= name
+          %th= attendance[:target_date]
+          %th= attendance[:status]
+          %th= attendance[:reason]
+          %th= attendance[:from] + '-' + attendance[:to]
+          %th= attendance[:comment]
+          %th= attendance[:created_at]
+          %th= attendance[:updated_at]
+
+%h2 Member List
+%div.container
+  %table.table.table-striped.table-hover
+    %thead
+      %tr
+        %th employee_number
+        %th name
+        %th team
+    %tbody
+      - @employees.each do |employee|
+        %tr
+          %th= employee[:id]
+          %th= employee[:name]
+          %th= employee[:team]
